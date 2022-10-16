@@ -1,0 +1,15 @@
+.btn {
+  font-weight: $font-weight-700;
+  font-size: $font-size-lg;
+  cursor: pointer;
+
+  &-default {
+    border-radius: $border-radius-12;
+    color: #ffffff;
+    background-color: $btn-default;
+    padding: 19px 12px 19px 6px;
+  }
+  &:hover {
+    background-color: $btn-hover;
+  }
+}
