@@ -34,6 +34,7 @@ export default {
 <style lang="scss" scoped>
 .start-div {
   text-align: start;
+  width: 50%;
 }
 .invalid-label {
   color: #ff0000b2;
