@@ -1,11 +1,15 @@
 <template>
-  <button v-bind="$attrs" class="btn" :class="btnClass">asdasdasdas</button>
+  <button v-bind="$attrs" class="btn" :class="btnClass">{{ btnText }}</button>
 </template>
 
 <script>
 export default {
   props: {
     btnClass: {
+      type: String,
+      required: false,
+    },
+    btnText: {
       type: String,
     },
   },

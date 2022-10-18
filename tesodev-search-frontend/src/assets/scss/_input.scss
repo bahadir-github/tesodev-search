@@ -2,7 +2,7 @@
   background-color: #ffffff;
   padding: 10px 17px;
   border-radius: $border-radius-8;
-  width: 100%;
+  width: -webkit-fill-available;
   font-weight: $font-weight-700;
   font-size: $font-size-lg;
   &:hover {
@@ -12,13 +12,19 @@
   &::placeholder {
     color: #64646480;
   }
+  &-icon {
+    height: 28px;
+    padding-left: 48px;
+    font-weight: $font-weight-400;
+    font-size: $font-size-sm;
+    caret-color: #6b4eff;
+  }
   border: 1.5px solid #484848;
-  margin-top: 7px;
 }
 
 .input-error {
   margin-top: 10px;
-  color: #FF000080;
+  color: #ff000080;
   font-weight: $font-weight-700;
   font-size: $font-size-lg;
 }

@@ -14,10 +14,10 @@ import FooterView from "./views/FooterView.vue";
 <style>
 #app {
   font-family: Roboto;
-  background: #e5e5e5;
 }
 .container {
   max-width: 1280px;
   margin: auto;
+  padding-top: 27px;
 }
 </style>

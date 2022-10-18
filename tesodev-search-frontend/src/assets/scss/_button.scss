@@ -7,7 +7,9 @@
     border-radius: $border-radius-12;
     color: #ffffff;
     background-color: $btn-default;
-    padding: 19px 12px 19px 6px;
+    padding-left: 19px;
+    padding-right: 19px;
+    min-height: 46px;
   }
   &:hover {
     background-color: $btn-hover;
