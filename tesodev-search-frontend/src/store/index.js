@@ -1,15 +1,40 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import * as user from "@/store/modules/user";
+import { apiClient } from "@/service/apiClient.js";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    users: [],
+    filteredUser: [],
+  },
   getters: {},
-  mutations: {},
-  actions: {},
-  modules: {
-    user,
+  mutations: {
+    SET_USERS(state, users) {
+      state.users = users;
+    },
+    SET_FIlTERED_USERS(state, filteredUser) {
+      state.filteredUser = filteredUser;
+    },
+  },
+  actions: {
+    async getUsers({ commit }) {
+      const data = await apiClient.get("users").then((response) => {
+        return response.data;
+      });
+      const cols = await apiClient.get("cols").then((response) => {
+        return response.data;
+      });
+      let usersIds = Array.from(Array(100).keys());
+      let createdUsers = usersIds.map((id, index) => {
+        let user = { id: id };
+        cols.forEach((col, colIndex) => {
+          user[col] = data[index][colIndex];
+        });
+        return user;
+      });
+      commit("SET_USERS", createdUsers);
+    },
   },
 });

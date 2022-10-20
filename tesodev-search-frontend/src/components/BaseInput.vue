@@ -38,7 +38,6 @@ export default {
     },
     inputValue: {
       type: String,
-      required: true,
     },
     iconInput: {
       type: Boolean,

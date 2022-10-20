@@ -1,5 +1,7 @@
 <template>
-  <button v-bind="$attrs" class="btn" :class="btnClass">{{ btnText }}</button>
+  <button v-on="$listeners" v-bind="$attrs" class="btn" :class="btnClass">
+    {{ btnText }}
+  </button>
 </template>
 
 <script>
