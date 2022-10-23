@@ -51,6 +51,10 @@
       color: white;
     }
   }
+  &-selected{
+    background-color:#204080;
+    color: #FFFFFF;
+  }
   &-error{
     padding: 8px 16px 8px 16px;
     background: #FF4E78;

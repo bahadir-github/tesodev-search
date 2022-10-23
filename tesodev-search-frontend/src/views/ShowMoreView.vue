@@ -56,7 +56,11 @@
     </div>
     <div class="pagination" v-if="filteredUser.length > 0 && searchKey">
       <base-button
-        btnClass="btn-pagination prev-next-btn"
+        :btnClass="
+          pageNumber === index
+            ? 'btn-selected btn-pagination prev-next-btn'
+            : 'btn-pagination prev-next-btn'
+        "
         btnText="Previous"
         @click="prevPage"
         :disabled="pageNumber === 0"
@@ -65,7 +69,11 @@
       <div class="pagination-numbers" v-if="usersCount <= 6">
         <div v-for="(a, index) in usersCount" :key="'button' + index">
           <base-button
-            btnClass="btn-pagination"
+            :btnClass="
+              pageNumber === index
+                ? 'btn-selected btn-pagination'
+                : 'btn-pagination'
+            "
             :btnText="index + 1"
             @click="numberPage(index)"
           ></base-button>
@@ -78,21 +86,30 @@
             v-if="index < 3"
             :btnText="index + 1"
             @click="numberPage(index)"
-            btnClass="btn-pagination"
+            :btnClass="
+              pageNumber === index
+                ? 'btn-selected btn-pagination'
+                : 'btn-pagination'
+            "
           ></base-button>
         </div>
         <span class="dot-span" v-if="pageNumber > 3">...</span>
         <base-button
           v-if="pageNumber < usersCount - 3 && pageNumber > 2"
           :btnText="pageNumber + 1"
-          btnClass="btn-pagination"
+          btnClass="btn-selected btn-pagination
+          "
         ></base-button>
 
         <span class="dot-span" v-if="pageNumber < usersCount - 4">...</span>
         <div v-for="(c, index) in usersCount" :key="'buttonlast' + index">
           <base-button
             v-if="index + 3 >= usersCount"
-            btnClass="btn-pagination"
+            :btnClass="
+              pageNumber === index
+                ? 'btn-selected btn-pagination'
+                : 'btn-pagination 3'
+            "
             :btnText="index + 1"
             @click="numberPage(index)"
           ></base-button>
