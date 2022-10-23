@@ -9,15 +9,18 @@
       class="search-icon"
     />
     <input
+      ref="input"
+      type="text"
       :placeholder="placeholderInput"
       class="form-input"
-      :value="inputValue"
-      :class="
-        (invalid ? 'invalid-input' : '', iconInput ? 'form-input-icon' : '')
-      "
+      :class="[
+        invalid ? 'invalid-input' : '',
+        iconInput ? 'form-input-icon' : '',
+      ]"
       @input="$emit('input', $event.target.value)"
+      v-bind="$attrs"
     />
-    <p v-if="invalid" class="input-error">Error</p>
+    <p v-if="invalid" class="input-error">{{ errorText }}</p>
   </div>
 </template>
 
@@ -36,12 +39,13 @@ export default {
       type: String,
       default: "",
     },
-    inputValue: {
-      type: String,
-    },
+    input: {},
     iconInput: {
       type: Boolean,
       default: false,
+    },
+    errorText: {
+      type: String,
     },
   },
 };
@@ -62,7 +66,7 @@ export default {
 .search-icon {
   position: absolute;
   left: 15px;
-  top: 15px;
+  top: 22px;
   width: 18px;
   height: 18px;
 }

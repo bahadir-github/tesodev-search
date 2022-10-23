@@ -1,6 +1,9 @@
 .btn {
+  display: inline-block;
+  width: auto;
   font-weight: $font-weight-700;
   font-size: $font-size-lg;
+  font-family: "Roboto", sans-serif;
   cursor: pointer;
 
   &-default {
@@ -10,8 +13,55 @@
     padding-left: 19px;
     padding-right: 19px;
     min-height: 46px;
+    min-width: 138px;
+    &:hover {
+      background-color: $btn-hover;
+    }
   }
-  &:hover {
-    background-color: $btn-hover;
+  
+  &:hover:disabled{
+    cursor: not-allowed;
   }
+  &-icon{
+    display: flex;
+  }
+  &-order{
+    padding: 3px 10px 3px 5px;
+    display: flex;
+    align-items: center;
+    border-radius: $border-radius-8;
+    border: 1px solid #414141;
+    background-color: #F3F2F2;
+    color: #484848;
+    font-size: $font-size-lg;
+    font-weight: 500;
+    &:hover{
+      background-color: #B3B3B3;
+    }
+  }
+  &-pagination{
+    border-radius: 4px;
+    border: 1px solid #484848;
+    color: #484848;
+    font-size: $font-size-sm; 
+    font-weight: $font-weight-700;
+    margin-right: 11px;
+    &:hover{
+      background-color: #204080;
+      color: white;
+    }
+  }
+  &-error{
+    padding: 8px 16px 8px 16px;
+    background: #FF4E78;
+    border-radius: 48px;
+    color: white;
+    font-weight: 500;
+    border: 0px;
+    cursor: auto;
+  }
+ 
+}
+.prev-next-btn {
+  width: 85px;
 }

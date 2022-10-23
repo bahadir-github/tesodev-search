@@ -1,23 +1,15 @@
 <template>
   <div id="app">
-    <div class="container">
-      <router-view />
-    </div>
-    <footer-view></footer-view>
+    <router-view />
   </div>
 </template>
-
-<script setup>
-import FooterView from "./views/FooterView.vue";
-</script>
+s
+<script setup></script>
 
 <style>
 #app {
-  font-family: Roboto;
-}
-.container {
-  max-width: 1280px;
-  margin: auto;
-  padding-top: 27px;
+  font-family: "Roboto", sans-serif;
+  background-color: #fcfcfc;
+  min-height: 900px;
 }
 </style>

@@ -1,7 +1,15 @@
 <template>
-  <button v-on="$listeners" v-bind="$attrs" class="btn" :class="btnClass">
-    {{ btnText }}
-  </button>
+  <div>
+    <button v-on="$listeners" v-bind="$attrs" class="btn" :class="btnClass">
+      <img
+        src="@/assets/images/btnIcon.png"
+        alt="btn"
+        class="btn-icon"
+        v-if="withIcon"
+      />
+      {{ btnText }}
+    </button>
+  </div>
 </template>
 
 <script>
@@ -11,9 +19,8 @@ export default {
       type: String,
       required: false,
     },
-    btnText: {
-      type: String,
-    },
+    btnText: {},
+    withIcon: {},
   },
   data() {
     return {};

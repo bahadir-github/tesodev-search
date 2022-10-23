@@ -6,10 +6,10 @@
     <div class="adress">
       <div>
         <p>İletişim</p>
-        <p>
+        <small>
           Adres: Çifte Havuzlar Mah. Eski Londra Asfaltı Cad. Kuluçka Merkezi D2
           Blok No: 151/1F İç Kapı No: 2B03 Esenler/İstanbul
-        </p>
+        </small>
       </div>
       <p>Email: bilgi@tesodev.com</p>
     </div>

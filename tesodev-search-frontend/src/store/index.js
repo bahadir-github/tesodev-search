@@ -8,14 +8,21 @@ export default new Vuex.Store({
   state: {
     users: [],
     filteredUser: [],
+    addedUser: [],
   },
   getters: {},
   mutations: {
     SET_USERS(state, users) {
       state.users = users;
+      if (state.addedUser.length > 0) {
+        state.users.push(...state.addedUser);
+      }
     },
     SET_FIlTERED_USERS(state, filteredUser) {
       state.filteredUser = filteredUser;
+    },
+    SET_NEW_USER(state, user) {
+      state.addedUser.push(user);
     },
   },
   actions: {
@@ -28,13 +35,16 @@ export default new Vuex.Store({
       });
       let usersIds = Array.from(Array(100).keys());
       let createdUsers = usersIds.map((id, index) => {
-        let user = { id: id };
+        let user = {};
         cols.forEach((col, colIndex) => {
           user[col] = data[index][colIndex];
         });
         return user;
       });
       commit("SET_USERS", createdUsers);
+    },
+    addUser({ commit }, user) {
+      commit("SET_NEW_USER", user);
     },
   },
 });

@@ -1,48 +1,65 @@
 <template>
-  <div style="height: 1000px">
-    <div class="add-new">
-      <base-button
-        btnClass="btn-default"
-        btnText="Add new record"
-      ></base-button>
-    </div>
-    <div class="logo">
-      <div class="logo-position">
-        <img src="@/assets/images/logo.png" alt="logo" />
-        <p class="logo-text">Search App</p>
-      </div>
-    </div>
-    <div class="search">
-      <div class="search-area">
-        <p class="header">Find in records</p>
-        <div class="search-input">
-          <base-input
-            v-model="searchWord"
-            class="input"
-            :iconInput="true"
-          ></base-input>
+  <div>
+    <div class="container">
+      <div class="add-new">
+        <router-link to="/add-user">
           <base-button
             btnClass="btn-default"
-            btnText="Search"
-            @click="filterUsers(users, searchWord)"
+            btnText="Add new record"
           ></base-button>
+        </router-link>
+      </div>
+      <div class="logo">
+        <div class="logo-position">
+          <img src="@/assets/images/logo.png" alt="logo" />
+          <p class="logo-text">Search App</p>
         </div>
       </div>
-    </div>
-    <div class="result-area" v-if="filteredUser.length">
-      <div
-        class="result-item"
-        v-for="user in filteredUser.slice(0, 3)"
-        :key="user.id"
-      >
-        <img src="@/assets/images/location.png" alt="location" />
-        <div>
-          <p class="result-name-area">{{ user.Name_Surname }}</p>
-          <p class="result-adress-area">{{ user.City }},{{ user.Country }}</p>
+      <div class="search">
+        <div class="search-area">
+          <p class="header">Find in records</p>
+          <div class="search-input">
+            <base-input
+              v-model="searchWord"
+              class="input"
+              :iconInput="true"
+            ></base-input>
+            <base-button
+              btnClass="btn-default"
+              btnText="Search"
+              @click="
+                filterUsers(searchWord);
+                showResultArea = true;
+              "
+              :disabled="searchWord === ''"
+            ></base-button>
+          </div>
         </div>
       </div>
-      <p class="show-more" v-if="filteredUser.length > 3">Show more...</p>
+      <div class="result-area" v-if="filteredUser.length && showResultArea">
+        <div v-for="(user, index) in filteredUser.slice(0, 3)" :key="user.id">
+          <hr v-if="index !== 0" />
+
+          <div class="result-item">
+            <img src="@/assets/images/location.png" alt="location" />
+            <div>
+              <p class="result-company-area">{{ user.Company }}</p>
+              <p class="result-adress-area">
+                {{ user.City }},{{ user.Country }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="show-more" v-if="filteredUser.length > 3">
+          <router-link
+            :to="{ path: '/show-more', query: { searchWord: searchWord } }"
+            >Show more...</router-link
+          >
+        </p>
+      </div>
+      <slider-view></slider-view>
     </div>
+    <footer-view></footer-view>
   </div>
 </template>
 
@@ -53,16 +70,21 @@ import BaseButton from "@/components/BaseButton.vue";
 import BaseInput from "@/components/BaseInput.vue";
 import { mapState } from "vuex";
 import { searchUser } from "@/mixins/searchUser";
+import FooterView from "@/views/FooterView.vue";
+import SliderView from "@/views/SliderView.vue";
 
 export default {
   mixins: [searchUser],
   components: {
     BaseButton,
     BaseInput,
+    FooterView,
+    SliderView,
   },
   data() {
     return {
       searchWord: "",
+      showResultArea: false,
     };
   },
   async mounted() {
@@ -113,6 +135,7 @@ export default {
     position: relative;
     display: flex;
     margin-left: 9px;
+    align-items: center;
     .input {
       font-weight: 400 !important;
       font-size: 16px !important;
@@ -142,9 +165,9 @@ export default {
     }
     display: flex;
     align-items: center;
-    font-family: Inter;
+    font-family: "Inter", sans-serif;
   }
-  .result-name-area {
+  .result-company-area {
     margin-bottom: 4px;
     color: #090a0a;
   }
@@ -157,10 +180,18 @@ export default {
     margin-bottom: 0px;
   }
 }
+hr {
+  border-top: 1px solid;
+  width: 80%;
+}
 .show-more {
   font-weight: 700;
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   color: #090a0a;
   text-align: center;
+}
+a {
+  color: #090a0a;
+  text-decoration: none;
 }
 </style>

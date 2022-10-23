@@ -1,0 +1,45 @@
+  .slider {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    .slider-images {
+      display: flex;
+      text-align: center;
+      .slider-image {
+        display: block;
+        margin-right: 23px;
+        width: 327px;
+      }
+      .slide-header {
+        text-align: left;
+        font-family: "Inter", sans-serif;
+        font-weight: $font-weight-700;
+        margin-top: 12px;
+      }
+      .slide-text {
+        text-align: left;
+        font-family: "Inter", sans-serif;
+        color: #6C7072;
+        font-weight: $font-weight-400;
+        font-size: 12px;
+        margin-top: 8px;
+      }
+      p{
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+    }
+    .previous-button{
+      position: absolute;
+      cursor: pointer;
+      left: 0;
+    }
+    .next-button{
+      position: absolute;
+      cursor: pointer;
+      right: 0;
+    }
+  }
