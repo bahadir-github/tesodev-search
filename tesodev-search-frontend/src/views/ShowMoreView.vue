@@ -56,7 +56,7 @@
     <div class="pagination" v-if="filteredUser.length > 0">
       <base-button
         btnClass="btn-pagination prev-next-btn"
-        btnText="Previosly"
+        btnText="Previous"
         @click="prevPage"
         :disabled="pageNumber === 0"
       ></base-button>
@@ -64,6 +64,7 @@
       <div class="pagination-numbers" v-if="usersCount <= 6">
         <div v-for="(a, index) in usersCount" :key="'button' + index">
           <base-button
+            btnClass="btn-pagination"
             :btnText="index + 1"
             @click="numberPage(index)"
           ></base-button>
@@ -79,7 +80,14 @@
             btnClass="btn-pagination"
           ></base-button>
         </div>
-        <span class="dot-span">...</span>
+        <span class="dot-span" v-if="pageNumber > 3">...</span>
+        <base-button
+          v-if="pageNumber < usersCount - 3 && pageNumber > 2"
+          :btnText="pageNumber + 1"
+          btnClass="btn-pagination"
+        ></base-button>
+
+        <span class="dot-span" v-if="pageNumber < usersCount - 4">...</span>
         <div v-for="(c, index) in usersCount" :key="'buttonlast' + index">
           <base-button
             v-if="index + 3 >= usersCount"
