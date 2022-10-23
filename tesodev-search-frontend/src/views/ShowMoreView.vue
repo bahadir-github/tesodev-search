@@ -16,11 +16,12 @@
           <base-button
             btnClass="btn-default "
             btnText="Add new record"
+            @click="clearFilteredUser()"
           ></base-button>
         </router-link>
       </div>
     </div>
-    <div class="order" v-if="filteredUser.length > 0">
+    <div class="order" v-if="filteredUser.length > 0 && searchKey">
       <base-button
         withIcon="true"
         btnClass="btn-order"
@@ -34,7 +35,7 @@
         <span @click="sortData('Date', 'desc')">Year descending</span>
       </div>
     </div>
-    <div class="result-area" v-if="filteredUser.length > 0">
+    <div class="result-area" v-if="filteredUser.length > 0 && searchKey">
       <div v-for="(user, index) in paginatedData" :key="user.id">
         <hr v-if="index !== 0" />
 
@@ -53,7 +54,7 @@
         </div>
       </div>
     </div>
-    <div class="pagination" v-if="filteredUser.length > 0">
+    <div class="pagination" v-if="filteredUser.length > 0 && searchKey">
       <base-button
         btnClass="btn-pagination prev-next-btn"
         btnText="Previous"
@@ -147,6 +148,9 @@ export default {
     nextPage() {
       this.isOrderListShow = false;
       this.pageNumber++;
+    },
+    clearFilteredUser() {
+      store.dispatch("clearFilteredUser");
     },
     prevPage() {
       this.isOrderListShow = false;

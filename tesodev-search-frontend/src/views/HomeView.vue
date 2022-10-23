@@ -6,6 +6,7 @@
           <base-button
             btnClass="btn-default"
             btnText="Add new record"
+            @click="clearFilteredUser()"
           ></base-button>
         </router-link>
       </div>
@@ -92,6 +93,11 @@ export default {
   },
   computed: {
     ...mapState(["users", "filteredUser"]),
+  },
+  methods: {
+    clearFilteredUser() {
+      store.dispatch("clearFilteredUser");
+    },
   },
 };
 </script>

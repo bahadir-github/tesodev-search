@@ -46,5 +46,8 @@ export default new Vuex.Store({
     addUser({ commit }, user) {
       commit("SET_NEW_USER", user);
     },
+    clearFilteredUser({ commit }) {
+      commit("SET_FIlTERED_USERS", []);
+    },
   },
 });
