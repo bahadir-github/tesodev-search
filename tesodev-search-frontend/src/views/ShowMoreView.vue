@@ -29,10 +29,34 @@
         @click="isOrderListShow = !isOrderListShow"
       ></base-button>
       <div v-if="isOrderListShow" class="order-list">
-        <span @click="sortData('Name_Surname', 'asc')">Name ascending</span>
-        <span @click="sortData('Name_Surname', 'desc')">Name descending</span>
-        <span @click="sortData('Date', 'asc')">Year ascanding</span>
-        <span @click="sortData('Date', 'desc')">Year descending</span>
+        <span
+          @click="
+            sortData('Name_Surname', 'asc');
+            isOrderListShow = false;
+          "
+          >Name ascending</span
+        >
+        <span
+          @click="
+            sortData('Name_Surname', 'desc');
+            isOrderListShow = false;
+          "
+          >Name descending</span
+        >
+        <span
+          @click="
+            sortData('Date', 'asc');
+            isOrderListShow = false;
+          "
+          >Year ascanding</span
+        >
+        <span
+          @click="
+            sortData('Date', 'desc');
+            isOrderListShow = false;
+          "
+          >Year descending</span
+        >
       </div>
     </div>
     <div class="result-area" v-if="filteredUser.length > 0 && searchKey">

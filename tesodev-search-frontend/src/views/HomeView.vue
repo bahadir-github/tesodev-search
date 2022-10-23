@@ -136,6 +136,8 @@ export default {
     font-weight: 700;
     font-size: 32px;
     color: #090a0a;
+    margin-top: 10px;
+    margin-bottom: 8px;
   }
   .search-input {
     position: relative;
@@ -187,7 +189,7 @@ export default {
   }
 }
 hr {
-  border-top: 1px solid;
+  border-top: 1px solid lightgray;
   width: 80%;
 }
 .show-more {
